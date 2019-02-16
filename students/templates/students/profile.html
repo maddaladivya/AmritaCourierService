@@ -21,22 +21,23 @@
         </span>
 
 
-        <div class="wrap-input100 validate-input" >
-          <input class="input100" name="username" id="username" value="{{ form.username.value|default_if_none:"" }}" >
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input class="input100" name="name" id="username" value="{{ form.name.value|default_if_none:"" }}" >
           <span class="focus-input100"></span>
-          <span class="label-input100">Username</span>
+          <span class="label-input100">Name</span>
         </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Password is required" value="">
-          <input class="input100" type="password" name="password1" value="" >
+
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input class="input100" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}" >
           <span class="focus-input100"></span>
-          <span class="label-input100">Password</span>
+          <span class="label-input100">Email</span>
         </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <input class="input100" type="password" name="password2" value="{{ object.email }}" >
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input class="input100" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
           <span class="focus-input100"></span>
-          <span class="label-input100">Re-enter Password</span>
+          <span class="label-input100">Phone Number</span>
         </div>
 
         <div class="flex-sb-m w-full p-t-3 p-b-32">
@@ -54,7 +55,7 @@
 
         <div class="container-login100-form-btn">
           <button class="login100-form-btn" type="submit" >
-            Register
+            Submit
           </button>
         </div>
       </form>

@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=False)
-    rollno = models.CharField(max_length=30, blank=False)
+    email = models.CharField(max_length=30, blank=False, default='')
     phonenumber = models.IntegerField(blank=True)
 
     def __str__(self):
