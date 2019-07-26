@@ -1,36 +1,118 @@
-{% load static%}
+<!--<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #f1c40f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+
+<div>
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="order id">Order Id</label>
+    <input type="text" name="courierid" placeholder="Order Id">
+    <input type="hidden" name="user" value="{{ request.user.id }}">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>-->
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--===============================================================================================-->
-  	<link rel="icon" type="image/png" href="{% static 'style/favicon.ico' %}"/>
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/bootstrap.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/font-awesome.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/material-design-iconic-font.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animate.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/hamburgers.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animsition.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/select2.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/daterangepicker.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/util.css' %}">
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
-  <!--===============================================================================================-->
-<style>
+  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<!-- <style>
+.container {
+  padding: 40px;
+}
 
+.search-box {
+  border: 1px solid;
+  box-shadow: 5px 10px 8px 10px #888888;
+  display: inline-block;
+  width: 80%;
+  border-radius: 3px
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+.search-box.hovered, .search-box:hover, .search-box:active {
+  border: 1px solid #aaa;
+}
+.search-box input[type=text] {
+  border: none;
+  box-shadow: none;
+  display: inline-block;
+  padding: 0;
+  background: transparent;
+}
+.search-box input[type=text]:hover, .search-box input[type=text]:focus, .search-box input[type=text]:active {
+  box-shadow: none;
+}
+.search-box  {
+  position: absolute;
+  left: 400px;
+  top: 400px;
+  color: #aaa;
+  border-radius: 3px;
+  font-size: 30px;
+  padding: 5px 10px 1px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+.search-btn{
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  color: #aaa;
+  border-radius: 3px;
+  font-size: 30px;
+  padding: 5px 10px 1px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+.search-box .search-btn:hover {
+  color: #fff;
+  background-color: #2d948d;
+}
+
+</style> -->
+<style>
 @charset "UTF-8";
 .navigation {
   margin:0px;
@@ -196,86 +278,123 @@ nav ul li ul li a {
   top:100px;
 }
 
-</style>
+input[type=text], select {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid;
+  box-shadow: 5px 10px 8px 10px #888888;
+}
+input[type=submit] {
+  border: 1px solid;
+  box-shadow: 5px 10px 8px 10px #888888;
+  width: 5%;
+  background-color: #62381b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #2D948D;
+}
+.searchbox   {
+  position: relative;
+  left:650px;
+  top:500px;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 20px;
+}
+.messages{
+  text-decoration-style: solid;
 
-      <link rel="stylesheet" href="css/style.css">
+}
+.messages:hover{
+  color: #2D948D;
+}
+</style>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
 
 <body>
-  <!--<section class="navigation">
-  <div class="nav-container">
-    <nav>
-      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-      <ul class="nav-list">
-        <li>
-          <a href="#!">Home</a>
-        </li>
-        <li>
-          <a href="#!">About</a>
-        </li>
-        <li>
-          <a href="#!">Pricing</a>
-        </li>
 
-        <li>
-          <a href="#!">Contact</a>
-        </li>
-      </ul>
-    </nav>
+<!-- <div class="container">
+  <div class="loginBox">
+  <div class="row">
+    <div class="col-md-12">
+    </div>
   </div>
-</section>-->
-<div class="container">
-
-<div class="loginBox">
-
-  <div class="limiter">
-<div class="container-login100">
-  <div class="wrap-login100">
-    <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
-      <span class="login100-form-title p-b-26">
-        Registration Successful
-      </span>
-
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
-      </div>
-
-      <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button class="login100-form-btn" type="submit">
-            Submit
+  <div class="row">
+    <div class="col-md-6">
+      <div class="search-box">
+        <form class="search-form">
+          <input class="form-control" placeholder="Order Id" type="text" name="courierid">
+          <input type="hidden" name="user" value="{{ request.user.id }}">
+          <button class="btn btn-link search-btn" type="submit">
+            <i class="glyphicon glyphicon-send"></i>
           </button>
-        </div>
+        </form>
       </div>
-
-    </form>
+    </div>
   </div>
 </div>
+</div> -->
+
+<section class="navigation">
+<div class="nav-container">
+  <nav>
+    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+    <ul class="nav-list">
+      <li>
+        <a href="{% url 'home' %}">Home</a>
+      </li>
+      <li>
+        <a href="{% url 'public' %}">Public</a>
+      </li>
+      <li>
+        <a href="{% url 'graph' %}">Slot Booking</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</section>
+<div class="messagebox">
+{% if messages %}
+  <div class="messages">
+
+    {% for message in messages %}
+
+      <h2 class="{{ message.tags }}" >  <i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ message }}</h2>
+      {% endfor %}
+  </div>
+{% endif %}
+</div>
+<div class = "searchbox">
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="courierid" placeholder="Order Id">
+    <input type="hidden" name="user" value="{{ request.user.id }}">
+    <input type="submit" value="Submit">
+  </form>
 </div>
 
 
-		</div>
   <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- viewBox="40 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600" >
+ viewBox="-50 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600">
 <g id="jjperezaguinaga" style="opacity:0.2;">
 	<g id="countryObjects">
 		<path fill="#F15C27" d="M124.467,134.068c-2.028,2.304-3.916,4.723-5.74,7.187c-0.104,0.155-0.359,0.16-0.568,0.012l-14.95-10.734
@@ -2915,49 +3034,12 @@ nav ul li ul li a {
 			c20.592-0.092,40.975,8.363,55.479,22.98c14.617,14.502,23.071,34.886,22.979,55.478L276.892,200.171L276.892,200.171z"/>
 	</g>
 </g>
-<g id="Timeless_Design">
 
-	<g>
-
-
-		<polyline points="202.615,221.111 199.696,225.441 196.699,221.142 		"/>
-
-
-		<polyline points="196.699,180.647 199.619,176.315 202.615,180.615 		"/>
-		<g>
-      <polygon points="191.413,146.273 190.346,146.698 189.391,146.06 189.466,147.206 188.565,147.917 189.677,148.2
-				190.075,149.277 190.688,148.306 191.836,148.261 191.101,147.378 			"/>
-			<polygon points="195.247,145.69 194.49,144.826 194.266,145.952 193.211,146.406 194.213,146.967 194.318,148.111
-				195.162,147.332 196.282,147.584 195.801,146.542 196.388,145.555 			"/>
-			<polygon points="200.338,145.474 199.829,144.445 199.322,145.474 198.184,145.639 199.007,146.441 198.813,147.572
-				199.829,147.038 200.846,147.572 200.652,146.441 201.475,145.639 			"/>
-			<polygon points="210.186,147.206 210.261,146.06 209.305,146.698 208.24,146.273 208.551,147.378 207.817,148.261
-				208.964,148.306 209.576,149.277 209.975,148.2 211.087,147.917 			"/>
-			<polygon points="205.16,145.008 204.404,145.871 203.264,145.737 203.851,146.724 203.369,147.766 204.49,147.513
-				205.333,148.292 205.439,147.15 206.44,146.588 205.386,146.135 			"/>
-		</g>
-	</g>
 </g>
 </svg>
-</div>
-<!--===============================================================================================-->
-	<script src="{% static 'style/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/animsition.min.js' %}" ></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/popper.js' %}"></script>
-	<script src="{% static 'style/bootstrap.min.js' %}" ></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/moment.min.js' %}"></script>
-	<script src="{% static 'style/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/main.js' %}"></script>
+
 
 
 </body>
 
-</html>
+</html>-->

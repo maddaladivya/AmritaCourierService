@@ -1,7 +1,29 @@
-{% load static%}
+<!--<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form  method="post">
+      {% csrf_token %}
+      <input type="hidden" name="user" value="{{request.user}}">
+      name:<input type="text" name="name" value="{{profile.name}}">
+      phonenumber:<input type="text" name="phonenumber" value="{{profile.phonenumber}}">
+      email:<input type="text" name="email" value="{{profile.email}}">
+      <button class="login100-form-btn" type="submit" >
+        <a href="{% url 'details' %}">
+        Update
+        </a>
+      </button>
+    </form>
+
+  </body>
+</html>-->
+
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
@@ -198,7 +220,7 @@ nav ul li ul li a {
 
 </style>
 
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
@@ -236,23 +258,29 @@ nav ul li ul li a {
     <form class="login100-form validate-form" method="post">
       {% csrf_token %}
       <span class="login100-form-title p-b-26">
-        Registration Successful
+        Edit Profile
       </span>
 
-
+      <input type="hidden" name="user" value="{{request.user}}">
       <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
+        <input class="input100" type="text" name="name" value="{{profile.name}}">
+        <span class="focus-input100"  ></span>
       </div>
 
       <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
+        <span class="btn-show-pass">
+          <i class="fas fa-eye"></i>
+        </span>
+        <input class="input100" type="tele"  name="phonenumber" value="{{profile.phonenumber}}">
+        <span class="focus-input100" ></span>
       </div>
 
       <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
+        <span class="btn-show-pass">
+          <i class="fas fa-eye"></i>
+        </span>
+        <input class="input100" type="email" name="email" value="{{profile.email}}">
+        <span class="focus-input100"  ></span>
       </div>
 
       <div class="container-login100-form-btn">
@@ -263,6 +291,7 @@ nav ul li ul li a {
           </button>
         </div>
       </div>
+
 
     </form>
   </div>

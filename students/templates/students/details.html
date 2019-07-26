@@ -1,10 +1,77 @@
-{% load static%}
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+      p, h1{
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="container" style="margin:300px">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h1>
+                            {{request.user.username}}</h1>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{profile.email}}
+                            <br />
+                            <i class="glyphicon glyphicon-phone"></i>{{profile.phonenumber}}</p>-->
+                        <!-- Split button -->
+                      <!--  <div class="btn-group">-->
+                            <!--<button type="button" class="btn btn-primary">
+                                My Couriers</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">My Couriers</span>
+                            </button>-->
+                          <!--  <ul class="dropdown-menu" role="menu">
+                              {% for i in tickets %}
+                                {% if i.user == request.user %}
+                                  <li>{{i.courierid}}</li>
+                                {% endif %}
+                              {% endfor %}
+                            </ul>
+                           <a href="{% url 'home' %}" style="color:white"><button type="button" class="btn btn-primary">Back</button></a>
+                            <a href="{% url 'update' %}" style="color:white"><button type="button" class="btn btn-primary">Edit</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--    {{request.user.username}}
+    {{profile.phonenumber}}
+    {{profile.email}}
+    {% for i in tickets %}
+      {% if i.user == request.user %}
+        {{i.courierid}}
+      {% endif %}
+    {% endfor %}
+    <a href="{% url 'home' %}">back</a>
+    <a href="{% url 'update' %}">update</a>-->
+<!--  </body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   <!--===============================================================================================-->
@@ -187,7 +254,7 @@ nav ul li ul li a {
 #nav-toggle.active span:after {
   transform: rotate(-45deg);
 }
-.container{
+.container1{
   position:relative;
 }
 .loginBox{
@@ -196,86 +263,173 @@ nav ul li ul li a {
   top:100px;
 }
 
+.container {
+  position: absolute;
+  height: 300px;
+  width: 600px;
+  top: 300px;
+  left: 300px;
+  display: flex;
+}
+.card1 {
+  display: flex;
+  height: 200px;
+  width: 700px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 250px;
+  text-align: center;
+}
+.card {
+  display: flex;
+  height: 280px;
+  width: 200px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  /* margin-left: -50px; */
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+
+}
+
+.card:not(:first-child) {
+    margin-left: -50px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+.title1 {
+  color: black;
+  font-weight: 300;
+  position: absolute;
+  left: 100px;
+  top: 40px;
+}
+.title {
+  color: black;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+.title2{
+
+  color: #2D948D;
+}
+.bar {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 150px;
+}
+
+.emptybar {
+  background-color: #2e3033;
+  width: 100%;
+  height: 100%;
+}
+
+.filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 0px;
+  height: 100%;
+  background: rgb(0,154,217);
+  background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+  transition: 0.6s ease-out;
+}
+
+.card:hover .filledbar {
+  width: 120px;
+  transition: 0.4s ease-out;
+}
+
+
+
+.stroke {
+  stroke: white;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+svg {
+  fill: #17141d;
+  stroke-width: 2px;
+}
+
+.card:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}
 </style>
 
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
 
 <body>
-  <!--<section class="navigation">
+  <section class="navigation">
   <div class="nav-container">
     <nav>
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
       <ul class="nav-list">
         <li>
-          <a href="#!">Home</a>
+          <a href="{% url 'update'%}">Update</a>
         </li>
         <li>
-          <a href="#!">About</a>
-        </li>
-        <li>
-          <a href="#!">Pricing</a>
-        </li>
-
-        <li>
-          <a href="#!">Contact</a>
+          <a href="{% url 'home' %}">Home</a>
         </li>
       </ul>
     </nav>
   </div>
-</section>-->
-<div class="container">
-
-<div class="loginBox">
-
-  <div class="limiter">
-<div class="container-login100">
-  <div class="wrap-login100">
-    <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
-      <span class="login100-form-title p-b-26">
-        Registration Successful
-      </span>
-
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
-      </div>
-
-      <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button class="login100-form-btn" type="submit">
-            Submit
-          </button>
+</section>
+<div class="container1">
+  <div class="loginBox">
+    <div class="card1">
+       <h2 style="color:#2D948D;padding-left:7em;padding-top:0.2em;font-weight:bold;">Student Details</h2>
+      <h3 style="padding-top:0.8em;" class="title1">Registration Number:{{request.user.username}} <br> Email: {{profile.email}}<br> Phone Number: {{profile.phonenumber}}  </h3>
+    </div>
+    <div class="container">
+      {% for i in tickets %}
+        {% if i.user == request.user %}
+        <div class="card">
+          <h3 class="title">OrderID: {{i.courierid}} <br><br>
+            {% if i.status == 0 %}
+            Status: Not Arrived
+            {% elif i.status == 1 %}
+            Status: Arrived
+            {% elif i.status == 2 %}
+            Status: Delivered
+            {% endif %}
+          </h3>
         </div>
-      </div>
+        {% endif %}
+      {% endfor %}
 
-    </form>
   </div>
-</div>
-</div>
-
-
-		</div>
+	</div>
   <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- viewBox="40 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600" >
+ viewBox="-40 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600" >
 <g id="jjperezaguinaga" style="opacity:0.2;">
 	<g id="countryObjects">
 		<path fill="#F15C27" d="M124.467,134.068c-2.028,2.304-3.916,4.723-5.74,7.187c-0.104,0.155-0.359,0.16-0.568,0.012l-14.95-10.734

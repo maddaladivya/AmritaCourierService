@@ -1,36 +1,33 @@
-{% load static%}
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>FC-python wrapper</title>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+</head>
+<body>
+  <div id="chart-1">{{ output|safe }}</div>
+  <form action="{% url 'book' %}" method="post">
+    {% csrf_token %}
+  <input class="date" type="text" name="d" id="datepicker" placeholder="Date" required/>
+  <label><input type="radio" name="s" value="s1" id="S1">Slot1</label>
+  <label><input type="radio" name="s" value="s2" id="S2">Slot2</label>
+  <label><input type="radio" name="s" value="s3" id="S3">Slot3</label>
+  <label><input type="radio" name="s" value="s4" id="S4">Slot4</label>
+  <button type="submit" name="button">Submit</button>
+</body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--===============================================================================================-->
-  	<link rel="icon" type="image/png" href="{% static 'style/favicon.ico' %}"/>
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/bootstrap.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/font-awesome.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/material-design-iconic-font.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animate.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/hamburgers.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animsition.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/select2.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/daterangepicker.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/util.css' %}">
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
-  <!--===============================================================================================-->
+  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
 <style>
-
 @charset "UTF-8";
 .navigation {
   margin:0px;
@@ -187,95 +184,201 @@ nav ul li ul li a {
 #nav-toggle.active span:after {
   transform: rotate(-45deg);
 }
-.container{
+.container5{
   position:relative;
 }
 .loginBox{
   position:absolute;
-  left:400px;
+    left:400px;
   top:100px;
 }
+.container {
+  position: absolute;
+  height: 1000px;
+  width: 1000px;
+  top: 300px;
+  left: 300px;
+  display: flex;
+}
 
+.card {
+  display: flex;
+  height: 700px;
+  width: 700px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  /* margin-left: -50px; */
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+  bottom:300px;
+}
+
+.card:not(:first-child) {
+    margin-left: -50px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+.title1 {
+  color: black;
+  font-weight: 300;
+  position: absolute;
+  left: 100px;
+  top: 40px;
+}
+.title {
+  color: black;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+.title2{
+
+  color: #2D948D;
+}
+.bar {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 150px;
+}
+
+.emptybar {
+  background-color: #2e3033;
+  width: 100%;
+  height: 100%;
+}
+
+.filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 0px;
+  height: 100%;
+  background: rgb(0,154,217);
+  background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+  transition: 0.6s ease-out;
+}
+
+.card:hover .filledbar {
+  width: 120px;
+  transition: 0.4s ease-out;
+}
+
+
+
+.stroke {
+  stroke: white;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+svg {
+  fill: #17141d;
+  stroke-width: 2px;
+}
+
+.card:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}
+input[type=text], select {
+  position: relative;
+  left:130px;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid;
+}
+button[type=submit] {
+  border: 1px solid;
+  box-shadow: 5px 10px 8px 10px #888888;
+  width: 20%;
+  background-color: #62381b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type=submit]:hover {
+  background-color: #2D948D;
+}
 </style>
-
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
 
 <body>
-  <!--<section class="navigation">
-  <div class="nav-container">
-    <nav>
-      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-      <ul class="nav-list">
-        <li>
-          <a href="#!">Home</a>
-        </li>
-        <li>
-          <a href="#!">About</a>
-        </li>
-        <li>
-          <a href="#!">Pricing</a>
-        </li>
 
-        <li>
-          <a href="#!">Contact</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section>-->
-<div class="container">
+<section class="navigation">
+<div class="nav-container">
+  <nav>
+    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+    <ul class="nav-list">
+      <li>
+        <a href="{% url 'home' %}">Home</a>
+      </li>
+      <li>
+        <a href="{% url 'public' %}">Public</a>
+      </li>
+      <li>
+        <a href="{% url 'graph' %}">Slot Booking</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</section>
 
-<div class="loginBox">
+<div class="container5">
+  <div class="loginBox">
 
-  <div class="limiter">
-<div class="container-login100">
-  <div class="wrap-login100">
-    <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
-      <span class="login100-form-title p-b-26">
-        Registration Successful
-      </span>
-
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
-      </div>
-
-      <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button class="login100-form-btn" type="submit">
-            Submit
-          </button>
+    <div class="container">
+        <div class="card">
+          <h4 class="title">
+            <div id="chart-1">{{ output|safe }}</div>
+            <form action="{% url 'book' %}" method="post">
+              {% csrf_token %}
+            <input class="date" type="text" name="d" id="datepicker" placeholder="YYYY-MM-DD" required/><br>
+            <label style="position:relative; left:230px;"><input type="radio" name="s" value="s1" id="S1" >Slot1</label><br>
+            <label style="position:relative; left:230px;"><input type="radio" name="s" value="s2" id="S2">Slot2</label><br>
+            <label style="position:relative; left:230px;"><input type="radio" name="s" value="s3" id="S3">Slot3</label><br>
+            <label style="position:relative; left:230px;"><input type="radio" name="s" value="s4" id="S4">Slot4</label><br><br>
+            <button style="position:relative; left:210px;" type="submit" name="button">Submit</button>
+          </form>
+          </h4>
         </div>
-      </div>
-
-    </form>
   </div>
 </div>
-</div>
 
 
-		</div>
+
   <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- viewBox="40 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600" >
+ viewBox="-50 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600">
 <g id="jjperezaguinaga" style="opacity:0.2;">
 	<g id="countryObjects">
 		<path fill="#F15C27" d="M124.467,134.068c-2.028,2.304-3.916,4.723-5.74,7.187c-0.104,0.155-0.359,0.16-0.568,0.012l-14.95-10.734
@@ -2883,7 +2986,7 @@ nav ul li ul li a {
 			<polygon fill="#62381B" points="74.637,109.911 70.346,116.354 74.69,118.545 78.333,113.075 			"/>
 		</g>
 	</g>
-	<g id="innerCircles">
+  <g id="innerCircles">
 		<path id="circle5" fill="#F15C27" d="M288.569,200.171c0.433-34.354-21.302-67.555-52.857-81.048
 			c-31.26-14.176-70.434-7.837-95.479,15.701c-25.674,22.849-35.486,61.307-24.13,93.701c10.636,32.639,41.765,57.229,76.03,59.846
 			l-0.126,1.414c-34.818-2.658-66.439-27.643-77.248-60.807c-11.542-32.912-1.567-71.987,24.517-95.2
@@ -2915,49 +3018,12 @@ nav ul li ul li a {
 			c20.592-0.092,40.975,8.363,55.479,22.98c14.617,14.502,23.071,34.886,22.979,55.478L276.892,200.171L276.892,200.171z"/>
 	</g>
 </g>
-<g id="Timeless_Design">
-
-	<g>
 
 
-		<polyline points="202.615,221.111 199.696,225.441 196.699,221.142 		"/>
-
-
-		<polyline points="196.699,180.647 199.619,176.315 202.615,180.615 		"/>
-		<g>
-      <polygon points="191.413,146.273 190.346,146.698 189.391,146.06 189.466,147.206 188.565,147.917 189.677,148.2
-				190.075,149.277 190.688,148.306 191.836,148.261 191.101,147.378 			"/>
-			<polygon points="195.247,145.69 194.49,144.826 194.266,145.952 193.211,146.406 194.213,146.967 194.318,148.111
-				195.162,147.332 196.282,147.584 195.801,146.542 196.388,145.555 			"/>
-			<polygon points="200.338,145.474 199.829,144.445 199.322,145.474 198.184,145.639 199.007,146.441 198.813,147.572
-				199.829,147.038 200.846,147.572 200.652,146.441 201.475,145.639 			"/>
-			<polygon points="210.186,147.206 210.261,146.06 209.305,146.698 208.24,146.273 208.551,147.378 207.817,148.261
-				208.964,148.306 209.576,149.277 209.975,148.2 211.087,147.917 			"/>
-			<polygon points="205.16,145.008 204.404,145.871 203.264,145.737 203.851,146.724 203.369,147.766 204.49,147.513
-				205.333,148.292 205.439,147.15 206.44,146.588 205.386,146.135 			"/>
-		</g>
-	</g>
-</g>
 </svg>
-</div>
-<!--===============================================================================================-->
-	<script src="{% static 'style/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/animsition.min.js' %}" ></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/popper.js' %}"></script>
-	<script src="{% static 'style/bootstrap.min.js' %}" ></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/moment.min.js' %}"></script>
-	<script src="{% static 'style/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/main.js' %}"></script>
 
+</div>
 
 </body>
 
-</html>
+</html>-->

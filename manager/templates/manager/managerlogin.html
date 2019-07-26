@@ -1,11 +1,11 @@
-{% load static%}
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   <!--===============================================================================================-->
   	<link rel="icon" type="image/png" href="{% static 'style/favicon.ico' %}"/>
@@ -195,10 +195,16 @@ nav ul li ul li a {
   left:400px;
   top:100px;
 }
+.messages{
+  text-decoration-style: solid;
 
+}
+.messages:hover{
+  color: #2D948D;
+}
 </style>
 
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
@@ -227,43 +233,60 @@ nav ul li ul li a {
   </div>
 </section>-->
 <div class="container">
+  <div class="messagebox">
+  {% if messages %}
+    <div class="messages">
 
+      {% for message in messages %}
+
+        <h2 class="{{ message.tags }}" >  <i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ message }}</h2>
+        {% endfor %}
+    </div>
+  {% endif %}
+  </div>
 <div class="loginBox">
 
   <div class="limiter">
 <div class="container-login100">
   <div class="wrap-login100">
     <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
+			{% csrf_token %}
       <span class="login100-form-title p-b-26">
-        Registration Successful
+        Welcome
       </span>
 
 
       <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
+        <input class="input100" type="text" name="username" id="username" >
+        <span class="focus-input100" data-placeholder="Roll No" ></span>
       </div>
 
       <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
+        <span class="btn-show-pass">
+          <i class="fas fa-eye"></i>
+        </span>
+        <input class="input100" type="password" name="password">
+        <span class="focus-input100" data-placeholder="Password" ></span>
       </div>
 
       <div class="container-login100-form-btn">
         <div class="wrap-login100-form-btn">
           <div class="login100-form-bgbtn"></div>
           <button class="login100-form-btn" type="submit">
-            Submit
+            Login
           </button>
         </div>
       </div>
 
+      <div class="text-center p-t-115">
+        <span class="txt1">
+          Don’t have an account?
+        </span>
+
+        <a class="txt2" href="{% url 'signup' %}">
+          Sign Up
+        </a>
+      </div>
     </form>
   </div>
 </div>

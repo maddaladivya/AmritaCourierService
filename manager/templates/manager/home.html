@@ -1,34 +1,10 @@
-{% load static%}
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--===============================================================================================-->
-  	<link rel="icon" type="image/png" href="{% static 'style/favicon.ico' %}"/>
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/bootstrap.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/font-awesome.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/material-design-iconic-font.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animate.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/hamburgers.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animsition.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/select2.min.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/daterangepicker.css' %}">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/util.css' %}">
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
-  <!--===============================================================================================-->
+
 <style>
 
 @charset "UTF-8";
@@ -187,96 +163,68 @@ nav ul li ul li a {
 #nav-toggle.active span:after {
   transform: rotate(-45deg);
 }
-.container{
-  position:relative;
-}
-.loginBox{
-  position:absolute;
-  left:400px;
-  top:100px;
-}
+
 
 </style>
 
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
 
 <body>
-  <!--<section class="navigation">
+  {% if user.is_superuser %}
+  <section class="navigation">
   <div class="nav-container">
     <nav>
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
       <ul class="nav-list">
         <li>
-          <a href="#!">Home</a>
+          <a href="#">Manager</a>
         </li>
         <li>
-          <a href="#!">About</a>
+          <a href="{% url 'mail' %}">Check Ticket</a>
         </li>
         <li>
-          <a href="#!">Pricing</a>
+          <a href="{% url 'deliver' %}">Pin verification</a>
         </li>
-
         <li>
-          <a href="#!">Contact</a>
+          <a href="{% url 'managerlogout' %}">Logout</a>
         </li>
       </ul>
     </nav>
   </div>
-</section>-->
-<div class="container">
+</section>
+{% else %}
+<section class="navigation">
+<div class="nav-container">
+  <nav>
+    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+    <ul class="nav-list">
+      <li>
+        <a href="{% url 'managerlogin' %}">Manager</a>
+      </li>
 
-<div class="loginBox">
+    </ul>
+  </nav>
+</div>
+</section>
+{% endif %}
+{% if messages %}
+  <div class="messages">
 
-  <div class="limiter">
-<div class="container-login100">
-  <div class="wrap-login100">
-    <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
-      <span class="login100-form-title p-b-26">
-        Registration Successful
-      </span>
+    {% for message in messages %}
 
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
-      </div>
-
-      <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button class="login100-form-btn" type="submit">
-            Submit
-          </button>
-        </div>
-      </div>
-
-    </form>
+      <h2 class="{{ message.tags }}" >  <i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ message }}</h2>
+      {% endfor %}
   </div>
-</div>
-</div>
-
-
-		</div>
+{% endif %}
   <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
- viewBox="40 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600" >
-<g id="jjperezaguinaga" style="opacity:0.2;">
+ viewBox="-30 80 400 400" enable-background="new 0 0 400 400" xml:space="preserve" height="1600">
+<g id="jjperezaguinaga">
 	<g id="countryObjects">
 		<path fill="#F15C27" d="M124.467,134.068c-2.028,2.304-3.916,4.723-5.74,7.187c-0.104,0.155-0.359,0.16-0.568,0.012l-14.95-10.734
 			c-0.208-0.149-0.431-0.462-0.492-0.699c-0.699-2.659-1.231-5.311-1.771-8.085c-0.046-0.243,0.114-0.458,0.359-0.476
@@ -2916,16 +2864,56 @@ nav ul li ul li a {
 	</g>
 </g>
 <g id="Timeless_Design">
-
 	<g>
+		<polygon points="191.413,255.582 190.346,255.157 189.391,255.794 189.466,254.649 188.565,253.937 189.677,253.654
+			190.075,252.577 190.688,253.549 191.836,253.594 191.101,254.476 		"/>
+		<polygon points="195.247,256.165 194.49,257.028 194.266,255.902 193.211,255.448 194.213,254.887 194.318,253.744
+			195.162,254.523 196.282,254.269 195.801,255.312 196.388,256.299 		"/>
+		<polygon points="200.338,256.381 199.829,257.41 199.322,256.381 198.184,256.215 199.007,255.414 198.813,254.282
+			199.829,254.817 200.846,254.282 200.652,255.414 201.475,256.215 		"/>
+		<polygon points="210.186,254.649 210.261,255.794 209.305,255.157 208.24,255.582 208.551,254.476 207.817,253.594
+			208.964,253.549 209.576,252.577 209.975,253.654 211.087,253.937 		"/>
+		<polygon points="205.16,256.846 204.404,255.983 203.264,256.117 203.851,255.131 203.369,254.088 204.49,254.342
+			205.333,253.562 205.439,254.706 206.44,255.266 205.386,255.72 		"/>
+	</g>
+	<g>
+		<g>
+			<line fill="none" x1="136.654" y1="231.395" x2="287.233" y2="198.513"/>
+			<text transform="matrix(0.977 -0.2134 0 1 149.3367 226.363)" font-family="'Pathway Gothic One'" font-size="39.6581">C</text>
+			<text transform="matrix(0.977 -0.2133 0 1 161.5945 223.6863)" font-family="'Pathway Gothic One'" font-size="39.6581">O</text>
+			<text transform="matrix(0.977 -0.2133 0 1 175.5847 220.6306)" font-family="'Pathway Gothic One'" font-size="39.6581">U</text>
+			<text transform="matrix(0.977 -0.2133 0 1 190.0623 217.4695)" font-family="'Pathway Gothic One'" font-size="39.6581">R</text>
+			<text transform="matrix(0.977 -0.2133 0 1 203.6252 214.5085)" font-family="'Pathway Gothic One'" font-size="39.6581">I</text>
+			<text transform="matrix(0.977 -0.2133 0 1 210.5266 212.8099)" font-family="'Pathway Gothic One'" font-size="39.6581">E</text>
+			<text transform="matrix(0.977 -0.2133 0 1 221.9495 210.4148)" font-family="'Pathway Gothic One'" font-size="39.6581">R</text>
+		</g>
+		<g>
+			<line fill="none" x1="146.574" y1="189.775" x2="205.712" y2="176.861"/>
+			<text transform="matrix(0.977 -0.2134 0 1 151.6272 187.7834)" font-family="'Pathway Gothic One'" font-size="15.5752">A</text>
+			<text transform="matrix(0.977 -0.2134 0 1 157.1804 186.5706)" font-family="'Pathway Gothic One'" font-size="15.5752">M</text>
+			<text transform="matrix(0.977 -0.2134 0 1 163.8459 185.0)" font-family="'Pathway Gothic One'" font-size="15.5752">R</text>
+			<text transform="matrix(0.977 -0.2134 0 1 169.1052 184.1500)" font-family="'Pathway Gothic One'" font-size="15.5752">I</text>
+			<text transform="matrix(0.977 -0.2133 0 1 171.8000 183.9000)" font-family="'Pathway Gothic One'" font-size="15.5752">T</text>
+			<text transform="matrix(0.977 -0.2133 0 1 176.0 182.9189)" font-family="'Pathway Gothic One'" font-size="15.5752">A</text>
+		</g>
+		<g>
+			<line fill="none" x1="213.236" y1="234.207" x2="272.375" y2="221.292"/>
+			<text transform="matrix(0.977 -0.2133 0 1 218.2815 232.2166)" font-family="'Pathway Gothic One'" font-size="15.5752">S</text>
+			<text transform="matrix(0.977 -0.2134 0 1 223.6321 230.7029)" font-family="'Pathway Gothic One'" font-size="15.5752">E</text>
+			<text transform="matrix(0.977 -0.2133 0 1 227.9778 230.0)" font-family="'Pathway Gothic One'" font-size="15.5752">R</text>
+			<text transform="matrix(0.977 -0.2134 0 1 232.7874 229.1404)" font-family="'Pathway Gothic One'" font-size="15.5752">V</text>
+			<text transform="matrix(0.977 -0.2133 0 1 238.1858 227.9607)" font-family="'Pathway Gothic One'" font-size="15.5752">I</text>
+			<text transform="matrix(0.977 -0.2133 0 1 240.8342 227.3000)" font-family="'Pathway Gothic One'" font-size="15.5752">C</text>
+			<text transform="matrix(0.977 -0.2134 0 1 245.8000 226.4861)" font-family="'Pathway Gothic One'" font-size="15.5752">E</text>
+		</g>
 
-
+			<rect x="152.606" y="219.751" transform="matrix(0.9774 -0.2115 0.2115 0.9774 -42.0389 47.9254)" width="100.736" height="1.385"/>
 		<polyline points="202.615,221.111 199.696,225.441 196.699,221.142 		"/>
 
-
+			<rect x="146.7" y="180.439" transform="matrix(-0.9774 0.2115 -0.2115 -0.9774 427.992 316.4788)" width="100.736" height="1.385"/>
 		<polyline points="196.699,180.647 199.619,176.315 202.615,180.615 		"/>
 		<g>
-      <polygon points="191.413,146.273 190.346,146.698 189.391,146.06 189.466,147.206 188.565,147.917 189.677,148.2
+			<polygon points="191.413,146.273 190.346,146.698 189.391,146.06 189.466,147.206 188.565,147.917 189.677,148.2
 				190.075,149.277 190.688,148.306 191.836,148.261 191.101,147.378 			"/>
 			<polygon points="195.247,145.69 194.49,144.826 194.266,145.952 193.211,146.406 194.213,146.967 194.318,148.111
 				195.162,147.332 196.282,147.584 195.801,146.542 196.388,145.555 			"/>
@@ -2939,23 +2927,7 @@ nav ul li ul li a {
 	</g>
 </g>
 </svg>
-</div>
-<!--===============================================================================================-->
-	<script src="{% static 'style/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/animsition.min.js' %}" ></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/popper.js' %}"></script>
-	<script src="{% static 'style/bootstrap.min.js' %}" ></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/moment.min.js' %}"></script>
-	<script src="{% static 'style/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'style/main.js' %}"></script>
+
 
 
 </body>

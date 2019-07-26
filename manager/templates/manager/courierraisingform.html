@@ -1,7 +1,21 @@
-{% load static%}
+<!--<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      courierid: <input type="text" name="courierid" >
+      <input type="submit" name="submit">
+    </form>
+
+  </body>
+</html>-->
 <!DOCTYPE html>
 <html lang="en" >
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <title>ACS</title>
@@ -195,75 +209,70 @@ nav ul li ul li a {
   left:400px;
   top:100px;
 }
+.messages{
+  text-decoration-style: solid;
 
+}
+.messages:hover{
+  color: #2D948D;
+}
 </style>
 
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 </head>
 
 <body>
-  <!--<section class="navigation">
+  <section class="navigation">
   <div class="nav-container">
     <nav>
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
       <ul class="nav-list">
         <li>
-          <a href="#!">Home</a>
-        </li>
-        <li>
-          <a href="#!">About</a>
-        </li>
-        <li>
-          <a href="#!">Pricing</a>
-        </li>
-
-        <li>
-          <a href="#!">Contact</a>
+          <a href="{% url 'managerhome' %}">Home</a>
         </li>
       </ul>
     </nav>
   </div>
-</section>-->
+</section>
 <div class="container">
+  <div class="messagebox">
+  {% if messages %}
+    <div class="messages">
 
+      {% for message in messages %}
+
+        <h2 class="{{ message.tags }}" >  <i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ message }}</h2>
+        {% endfor %}
+    </div>
+  {% endif %}
+  </div>
 <div class="loginBox">
 
   <div class="limiter">
 <div class="container-login100">
   <div class="wrap-login100">
     <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
+			{% csrf_token %}
       <span class="login100-form-title p-b-26">
-        Registration Successful
+        Welcome
       </span>
 
 
       <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
+        <input class="input100" type="text" name="courierid">
+        <span class="focus-input100" data-placeholder="Courier ID" ></span>
       </div>
 
       <div class="container-login100-form-btn">
         <div class="wrap-login100-form-btn">
           <div class="login100-form-bgbtn"></div>
           <button class="login100-form-btn" type="submit">
-            Submit
+            Send Mail
           </button>
         </div>
       </div>
-
     </form>
   </div>
 </div>

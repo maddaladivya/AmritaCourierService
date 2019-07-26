@@ -1,4 +1,3 @@
-{% load static%}
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -8,26 +7,26 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   <!--===============================================================================================-->
-  	<link rel="icon" type="image/png" href="{% static 'style/favicon.ico' %}"/>
+  	<link rel="icon" type="image/png" href="favicon.ico"/>
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/bootstrap.min.css' %}">
+  	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/font-awesome.min.css' %}">
+  	<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/material-design-iconic-font.min.css' %}">
+  	<link rel="stylesheet" type="text/css" href="material-design-iconic-font.min.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animate.css' %}">
+  	<link rel="stylesheet" type="text/css" href="animate.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/hamburgers.min.css' %}">
+  	<link rel="stylesheet" type="text/css" href="hamburgers.min.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/animsition.min.css' %}">
+  	<link rel="stylesheet" type="text/css" href="animsition.min.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/select2.min.css' %}">
+  	<link rel="stylesheet" type="text/css" href="select2.min.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/daterangepicker.css' %}">
+  	<link rel="stylesheet" type="text/css" href="daterangepicker.css">
   <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/util.css' %}">
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
+  	<link rel="stylesheet" type="text/css" href="util.css">
+  	<link rel="stylesheet" type="text/css" href="main.css">
   <!--===============================================================================================-->
 <style>
 
@@ -233,37 +232,43 @@ nav ul li ul li a {
   <div class="limiter">
 <div class="container-login100">
   <div class="wrap-login100">
-    <form class="login100-form validate-form" method="post">
-      {% csrf_token %}
+    <form class="login100-form validate-form">
       <span class="login100-form-title p-b-26">
-        Registration Successful
+        Welcome
       </span>
 
 
       <div class="wrap-input100 " >
-        <input class="input100" type="text"  name="name" id="username" value="{{ form.name.value|default_if_none:"" }}"  >
-        <span class="focus-input100" data-placeholder="Name"></span>
+        <input class="input100" type="text" name="email">
+        <span class="focus-input100" data-placeholder="Email"></span>
       </div>
 
       <div class="wrap-input100 " >
-        <input class="input100" type="email" name="email" id="username" value="{{ form.rollno.value|default_if_none:"" }}">
-        <span class="focus-input100" data-placeholder="Email" ></span>
-      </div>
-
-      <div class="wrap-input100 " >
-        <input class="input100" type="tele" name="phonenumber" id="username" value="{{ form.phonenumber.value|default_if_none:"" }}" >
-        <span class="focus-input100" data-placeholder="Phone Number" ></span>
+        <span class="btn-show-pass">
+          <i class="fas fa-eye"></i>
+        </span>
+        <input class="input100" type="password" name="pass">
+        <span class="focus-input100" data-placeholder="Password"></span>
       </div>
 
       <div class="container-login100-form-btn">
         <div class="wrap-login100-form-btn">
           <div class="login100-form-bgbtn"></div>
-          <button class="login100-form-btn" type="submit">
-            Submit
+          <button class="login100-form-btn">
+            Login
           </button>
         </div>
       </div>
 
+      <div class="text-center p-t-115">
+        <span class="txt1">
+          Don’t have an account?
+        </span>
+
+        <a class="txt2" href="#">
+          Sign Up
+        </a>
+      </div>
     </form>
   </div>
 </div>
@@ -2941,21 +2946,21 @@ nav ul li ul li a {
 </svg>
 </div>
 <!--===============================================================================================-->
-	<script src="{% static 'style/jquery-3.2.1.min.js' %}"></script>
+	<script src="jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'style/animsition.min.js' %}" ></script>
+	<script src="animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'style/popper.js' %}"></script>
-	<script src="{% static 'style/bootstrap.min.js' %}" ></script>
+	<script src="popper.js"></script>
+	<script src="bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'style/select2.min.js' %}"></script>
+	<script src="select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'style/moment.min.js' %}"></script>
-	<script src="{% static 'style/daterangepicker.js' %}"></script>
+	<script src="moment.min.js"></script>
+	<script src="daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'style/countdowntime.js' %}"></script>
+	<script src="countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'style/main.js' %}"></script>
+	<script src="main.js"></script>
 
 
 </body>

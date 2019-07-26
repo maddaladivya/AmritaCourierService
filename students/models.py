@@ -16,3 +16,22 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse('profile', kwargs={'pk': self.id})
+
+class Tickets(models.Model):
+    courierid = models.CharField(max_length=50, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+    otp = models.IntegerField(max_length=30, default=0)
+    status = models.IntegerField(max_length=30, default=0)
+
+    def __str__(self):
+        return self.courierid
+
+class Booking(models.Model):
+    date = models.DateField()
+    s1 = models.IntegerField(default=0)
+    s2 = models.IntegerField(default=0)
+    s3 = models.IntegerField(default=0)
+    s4 = models.IntegerField(default=0)
+
+def __str__(self):
+    return self.date
